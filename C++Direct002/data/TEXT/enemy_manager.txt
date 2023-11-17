@@ -1,0 +1,817 @@
+#===================================================================================================
+#
+# 『敵のマネージャ』スクリプトファイル [enemy_manager.txt]
+# Author : 相馬 靜雅
+#
+#===================================================================================================
+SCRIPT			# この行は絶対消さないこと！
+
+#------------------------------------------------------------------
+# キャラクター数
+#------------------------------------------------------------------
+NUM_CHARACTER = 12
+
+#------------------------------------------------------------------
+# キャラクターファイル名
+#------------------------------------------------------------------
+MOTION_FILENAME = data/TEXT/motion_set_woodman.txt			# [0]パワー+3
+MOTION_FILENAME = data/TEXT/motion_crowd.txt				# [1]群体+3
+MOTION_FILENAME = data/TEXT/motion_enemyjump.txt			# [2]ジャンプ
+MOTION_FILENAME = data/TEXT/motion_enemybomb.txt			# [3]ボム
+MOTION_FILENAME = data/TEXT/motion_enemyspeed.txt			# [4]スピード
+MOTION_FILENAME = data/TEXT/motion_enemyimpact.txt			# [5]衝撃
+MOTION_FILENAME = data/TEXT/motion_enemyimpact_center.txt	# [6]衝撃
+MOTION_FILENAME = data/TEXT/motion_crowd_poison.txt			# [7]群体(紫)
+MOTION_FILENAME = data/TEXT/motion_crowd_lucky.txt			# [8]群体(緑)
+MOTION_FILENAME = data/TEXT/motion_crowd_confusion.txt		# [9]群体(白)
+MOTION_FILENAME = data/TEXT/motion_crowd_swiftfoot.txt		# [10]群体(青)
+MOTION_FILENAME = data/TEXT/motion_tutorialenemy.txt		# [11]群体(チュートリアル)
+
+#===================================================================================================
+# 敵の情報
+#===================================================================================================
+#------------------------------------------------------------------
+# パワー+3単騎
+#------------------------------------------------------------------
+PATTERNSET
+	TYPE = 0	# パターンの種類(読み込みはしない)
+	
+	ENEMYSET
+		TYPE = 0					# キャラの種類
+		INDEX = 0
+		PARENT = -1					# 親
+		POS = 0.00 0.00 0.00
+	END_ENEMYSET
+	
+END_PATTERNSET
+
+#------------------------------------------------------------------
+# 群体+3
+#------------------------------------------------------------------
+PATTERNSET
+	TYPE = 1	# パターンの種類(読み込みはしない)
+	
+	ENEMYSET
+		TYPE = 1					# キャラの種類
+		INDEX = 0
+		PARENT = -1					# 親のインデックス番号
+		POS = 0.00 0.00 0.00
+	END_ENEMYSET
+	
+	ENEMYSET
+		TYPE = 1					# キャラの種類
+		INDEX = 1
+		PARENT = 0					# 親のインデックス番号
+		POS = 0.00 0.00 50.00
+	END_ENEMYSET
+	
+	ENEMYSET
+		TYPE = 1					# キャラの種類
+		INDEX = 2
+		PARENT = 1					# 親のインデックス番号
+		POS = 0.00 0.00 100.00
+	END_ENEMYSET
+	
+	ENEMYSET
+		TYPE = 1					# キャラの種類
+		INDEX = 3
+		PARENT = 2					# 親のインデックス番号
+		POS = 0.00 0.00 150.00
+	END_ENEMYSET
+	
+	ENEMYSET
+		TYPE = 1					# キャラの種類
+		INDEX = 4
+		PARENT = 3					# 親のインデックス番号
+		POS = 0.00 0.00 200.00
+	END_ENEMYSET
+	
+	ENEMYSET
+		TYPE = 1					# キャラの種類
+		INDEX = 5
+		PARENT = 4					# 親のインデックス番号
+		POS = 0.00 0.00 250.00
+	END_ENEMYSET
+	
+	ENEMYSET
+		TYPE = 1					# キャラの種類
+		INDEX = 6
+		PARENT = 5					# 親のインデックス番号
+		POS = 0.00 0.00 300.00
+	END_ENEMYSET
+	
+	ENEMYSET
+		TYPE = 1					# キャラの種類
+		INDEX = 7
+		PARENT = 6					# 親のインデックス番号
+		POS = 0.00 0.00 350.00
+	END_ENEMYSET
+	
+	ENEMYSET
+		TYPE = 1					# キャラの種類
+		INDEX = 8
+		PARENT = 7					# 親のインデックス番号
+		POS = 0.00 0.00 400.00
+	END_ENEMYSET
+END_PATTERNSET
+
+#------------------------------------------------------------------
+# 群体+2
+#------------------------------------------------------------------
+PATTERNSET
+	TYPE = 2	# パターンの種類(読み込みはしない)
+	
+	ENEMYSET
+		TYPE = 1					# キャラの種類
+		INDEX = 0
+		PARENT = -1					# 親のインデックス番号
+		POS = 0.00 0.00 0.00
+	END_ENEMYSET
+	
+	ENEMYSET
+		TYPE = 1					# キャラの種類
+		INDEX = 1
+		PARENT = 0					# 親のインデックス番号
+		POS = 0.00 0.00 50.00
+	END_ENEMYSET
+	
+	ENEMYSET
+		TYPE = 1					# キャラの種類
+		INDEX = 2
+		PARENT = 1					# 親のインデックス番号
+		POS = 0.00 0.00 100.00
+	END_ENEMYSET
+	
+	ENEMYSET
+		TYPE = 1					# キャラの種類
+		INDEX = 3
+		PARENT = 2					# 親のインデックス番号
+		POS = 0.00 0.00 150.00
+	END_ENEMYSET
+END_PATTERNSET
+
+#------------------------------------------------------------------
+# パワー+3と群体ちょこっと
+#------------------------------------------------------------------
+PATTERNSET
+	TYPE = 3	# パターンの種類(読み込みはしない)
+	
+	ENEMYSET
+		TYPE = 0					# キャラの種類
+		INDEX = 0
+		PARENT = -1					# 親
+		POS = 0.00 0.00 0.00
+	END_ENEMYSET
+	
+	ENEMYSET
+		TYPE = 1					# キャラの種類
+		INDEX = 1
+		PARENT = 0					# 親
+		POS = 80.00 0.00 0.00
+	END_ENEMYSET
+	
+	ENEMYSET
+		TYPE = 1					# キャラの種類
+		INDEX = 2
+		PARENT = 0					# 親
+		POS = -70.00 0.00 50.00
+	END_ENEMYSET
+	
+	ENEMYSET
+		TYPE = 1					# キャラの種類
+		INDEX = 3
+		PARENT = 0					# 親
+		POS = 0.00 0.00 120.00
+	END_ENEMYSET
+	
+	ENEMYSET
+		TYPE = 1					# キャラの種類
+		INDEX = 4
+		PARENT = 0					# 親
+		POS = 100.00 0.00 -100.00
+	END_ENEMYSET
+	
+	ENEMYSET
+		TYPE = 1					# キャラの種類
+		INDEX = 5
+		PARENT = 0					# 親
+		POS = 150.00 0.00 160.00
+	END_ENEMYSET
+	
+	ENEMYSET
+		TYPE = 1					# キャラの種類
+		INDEX = 6
+		PARENT = 0					# 親
+		POS = 170.00 0.00 50.00
+	END_ENEMYSET
+	
+END_PATTERNSET
+
+
+#------------------------------------------------------------------
+# ジャンプ
+#------------------------------------------------------------------
+PATTERNSET
+	TYPE = 4	# パターンの種類(読み込みはしない)
+	
+	ENEMYSET
+		TYPE = 2					# キャラの種類
+		INDEX = 0
+		PARENT = -1					# 親
+		POS = 0.00 0.00 0.00
+	END_ENEMYSET
+	
+END_PATTERNSET
+
+
+#------------------------------------------------------------------
+# ボム
+#------------------------------------------------------------------
+PATTERNSET
+	TYPE = 5	# パターンの種類(読み込みはしない)
+	
+	ENEMYSET
+		TYPE = 3					# キャラの種類
+		INDEX = 0
+		PARENT = -1					# 親
+		POS = 0.00 0.00 0.00
+	END_ENEMYSET
+	
+	ENEMYSET
+		TYPE = 3					# キャラの種類
+		INDEX = 1
+		PARENT = -1					# 親
+		POS = 0.00 0.00 0.00
+	END_ENEMYSET
+	
+	ENEMYSET
+		TYPE = 3					# キャラの種類
+		INDEX = 2
+		PARENT = -1					# 親
+		POS = 0.00 0.00 0.00
+	END_ENEMYSET
+	
+END_PATTERNSET
+
+
+#------------------------------------------------------------------
+# スピード
+#------------------------------------------------------------------
+PATTERNSET
+	TYPE = 6	# パターンの種類(読み込みはしない)
+	
+	ENEMYSET
+		TYPE = 4					# キャラの種類
+		INDEX = 0
+		PARENT = -1					# 親
+		POS = 0.00 0.00 0.00
+	END_ENEMYSET
+	
+	ENEMYSET
+		TYPE = 4					# キャラの種類
+		INDEX = 1
+		PARENT = 0					# 親
+		POS = 0.00 0.00 50.00
+	END_ENEMYSET
+	
+	ENEMYSET
+		TYPE = 4					# キャラの種類
+		INDEX = 2
+		PARENT = 1					# 親
+		POS = 0.00 0.00 100.00
+	END_ENEMYSET
+	
+END_PATTERNSET
+
+#------------------------------------------------------------------
+# 波お越し
+#------------------------------------------------------------------
+PATTERNSET
+	TYPE = 7	# パターンの種類(読み込みはしない)
+	
+	ENEMYSET
+		TYPE = 5					# キャラの種類
+		INDEX = 0
+		PARENT = -1					# 親
+		POS = 0.00 0.00 0.00
+	END_ENEMYSET
+	
+END_PATTERNSET
+
+
+#------------------------------------------------------------------
+# センター波起こし
+#------------------------------------------------------------------
+PATTERNSET
+	TYPE = 8	# パターンの種類(読み込みはしない)
+	
+	ENEMYSET
+		TYPE = 6					# キャラの種類
+		INDEX = 0
+		PARENT = -1					# 親
+		POS = 0.00 0.00 0.00
+	END_ENEMYSET
+	
+END_PATTERNSET
+
+
+#------------------------------------------------------------------
+# ジャンプ(隊列)
+#------------------------------------------------------------------
+PATTERNSET
+	TYPE = 9	# パターンの種類(読み込みはしない)
+	
+	ENEMYSET
+		TYPE = 2					# キャラの種類
+		INDEX = 0
+		PARENT = -1					# 親
+		POS = 0.00 0.00 0.00
+	END_ENEMYSET
+	
+	ENEMYSET
+		TYPE = 2					# キャラの種類
+		INDEX = 1
+		PARENT = 0
+		POS = 0.00 0.00 50.00
+	END_ENEMYSET
+	
+	ENEMYSET
+		TYPE = 2					# キャラの種類
+		INDEX = 2
+		PARENT = 1					# 親
+		POS = 0.00 0.00 100.00
+	END_ENEMYSET
+	
+END_PATTERNSET
+
+
+#------------------------------------------------------------------
+# 円状に群体
+#------------------------------------------------------------------
+PATTERNSET
+	TYPE = 10	# パターンの種類(読み込みはしない)
+	
+	ENEMYSET
+		TYPE = 1					# キャラの種類
+		INDEX = 0
+		PARENT = -1					# 親のインデックス番号
+		WAITTIME = 5				# 待機時間
+		POS = 0.00 0.00 0.00
+	END_ENEMYSET
+END_PATTERNSET
+
+
+#------------------------------------------------------------------
+# 横隊列(群体)
+#------------------------------------------------------------------
+PATTERNSET
+	TYPE = 11	# パターンの種類(読み込みはしない)
+	
+	ENEMYSET
+		TYPE = 1					# キャラの種類
+		INDEX = 0
+		PARENT = -1					# 親のインデックス番号
+		WAITTIME = 5				# 待機時間
+		POS = 0.00 0.00 0.00
+	END_ENEMYSET
+	
+	ENEMYSET
+		TYPE = 1					# キャラの種類
+		INDEX = 1
+		PARENT = 0					# 親のインデックス番号
+		WAITTIME = 5				# 待機時間
+		POS = 80.00 0.00 0.00
+	END_ENEMYSET
+	
+	ENEMYSET
+		TYPE = 1					# キャラの種類
+		INDEX = 2
+		PARENT = 0					# 親のインデックス番号
+		WAITTIME = 5				# 待機時間
+		POS = 160.00 0.00 0.00
+	END_ENEMYSET
+	
+	ENEMYSET
+		TYPE = 1					# キャラの種類
+		INDEX = 3
+		PARENT = 0					# 親のインデックス番号
+		WAITTIME = 5				# 待機時間
+		POS = 240.00 0.00 0.00
+	END_ENEMYSET
+	
+	ENEMYSET
+		TYPE = 1					# キャラの種類
+		INDEX = 4
+		PARENT = 0					# 親のインデックス番号
+		WAITTIME = 5				# 待機時間
+		POS = 300.00 0.00 0.00
+	END_ENEMYSET
+	
+	ENEMYSET
+		TYPE = 1					# キャラの種類
+		INDEX = 5
+		PARENT = 0					# 親のインデックス番号
+		WAITTIME = 5				# 待機時間
+		POS = -80.00 0.00 0.00
+	END_ENEMYSET
+	
+	ENEMYSET
+		TYPE = 1					# キャラの種類
+		INDEX = 6
+		PARENT = 0					# 親のインデックス番号
+		WAITTIME = 5				# 待機時間
+		POS = -160.00 0.00 0.00
+	END_ENEMYSET
+	
+	ENEMYSET
+		TYPE = 1					# キャラの種類
+		INDEX = 7
+		PARENT = 0					# 親のインデックス番号
+		WAITTIME = 5				# 待機時間
+		POS = -240.00 0.00 0.00
+	END_ENEMYSET
+	
+	ENEMYSET
+		TYPE = 1					# キャラの種類
+		INDEX = 8
+		PARENT = 0					# 親のインデックス番号
+		WAITTIME = 5				# 待機時間
+		POS = -300.00 0.00 0.00
+	END_ENEMYSET
+END_PATTERNSET
+
+
+#------------------------------------------------------------------
+# V字隊列(群体)
+#------------------------------------------------------------------
+PATTERNSET
+	TYPE = 12	# パターンの種類(読み込みはしない)
+	
+	ENEMYSET
+		TYPE = 1					# キャラの種類
+		INDEX = 0
+		PARENT = -1					# 親のインデックス番号
+		WAITTIME = 5				# 待機時間
+		POS = 0.00 0.00 0.00
+	END_ENEMYSET
+	
+	ENEMYSET
+		TYPE = 1					# キャラの種類
+		INDEX = 1
+		PARENT = 0					# 親のインデックス番号
+		WAITTIME = 5				# 待機時間
+		POS = 80.00 0.00 -80.00
+	END_ENEMYSET
+	
+	ENEMYSET
+		TYPE = 1					# キャラの種類
+		INDEX = 2
+		PARENT = 0					# 親のインデックス番号
+		WAITTIME = 5				# 待機時間
+		POS = 160.00 0.00 -160.00
+	END_ENEMYSET
+	
+	ENEMYSET
+		TYPE = 1					# キャラの種類
+		INDEX = 3
+		PARENT = 0					# 親のインデックス番号
+		WAITTIME = 5				# 待機時間
+		POS = 240.00 0.00 -240.00
+	END_ENEMYSET
+	
+	ENEMYSET
+		TYPE = 1					# キャラの種類
+		INDEX = 4
+		PARENT = 0					# 親のインデックス番号
+		WAITTIME = 5				# 待機時間
+		POS = 300.00 0.00 -300.00
+	END_ENEMYSET
+	
+	ENEMYSET
+		TYPE = 1					# キャラの種類
+		INDEX = 5
+		PARENT = 0					# 親のインデックス番号
+		WAITTIME = 5				# 待機時間
+		POS = -80.00 0.00 -80.00
+	END_ENEMYSET
+	
+	ENEMYSET
+		TYPE = 1					# キャラの種類
+		INDEX = 6
+		PARENT = 0					# 親のインデックス番号
+		WAITTIME = 5				# 待機時間
+		POS = -160.00 0.00 -160.00
+	END_ENEMYSET
+	
+	ENEMYSET
+		TYPE = 1					# キャラの種類
+		INDEX = 7
+		PARENT = 0					# 親のインデックス番号
+		WAITTIME = 5				# 待機時間
+		POS = -240.00 0.00 -240.00
+	END_ENEMYSET
+	
+	ENEMYSET
+		TYPE = 1					# キャラの種類
+		INDEX = 8
+		PARENT = 0					# 親のインデックス番号
+		WAITTIME = 5				# 待機時間
+		POS = -300.00 0.00 -300.00
+	END_ENEMYSET
+END_PATTERNSET
+
+#------------------------------------------------------------------
+# 群体単騎
+#------------------------------------------------------------------
+PATTERNSET
+	TYPE = 13	# パターンの種類(読み込みはしない)
+	
+	ENEMYSET
+		TYPE = 1					# キャラの種類
+		INDEX = 0
+		PARENT = -1					# 親のインデックス番号
+		POS = 0.00 0.00 0.00
+	END_ENEMYSET
+END_PATTERNSET
+
+#===================================================================================================
+# 敵の拠点
+#===================================================================================================
+#--------------------------------[Stage1]-----------------------------
+STAGESET
+	# 真ん中の下、0
+	BASESET
+		POS = 200.00 245.57 -2045.00
+		ROT = 0.00 2.82 0.00
+	END_BASESET
+
+	# 左下、1
+	BASESET
+		POS = -1867.00 19.51 -1867.00
+		ROT = 0.00 -1.57 0.00
+	END_BASESET
+
+	# 右下の丘の上、2
+	BASESET
+		POS = 2034.63 300.75 -2009.43
+		ROT = 0.00 2.51 0.00
+	END_BASESET
+
+	# 右下の丘の下、3
+	BASESET
+		POS = 906.00 10.00 -1066.00
+		ROT = 0.00 0.00 0.00
+	END_BASESET
+
+	# 右上の丘の下、4
+	BASESET
+		POS = 1858.59 63.78 1893.58
+		ROT = 0.00 0.31 0.00
+	END_BASESET
+
+	# 真ん中右の丘の上、5
+	BASESET
+		POS = 2099.59 276.85 168.23
+		ROT = 0.00 1.57 0.00
+	END_BASESET
+
+	# 真ん中の三角のところ、6
+	BASESET
+		POS = 0.00 10.09 1040.64
+		ROT = 0.00 0.00 0.00
+	END_BASESET
+
+	# 左上のくぼみ、7
+	BASESET
+		POS = -1773.32 37.73 2114.32
+		ROT = 0.00 1.57 0.00
+	END_BASESET
+
+	# 左の丘の道、8
+	BASESET
+		POS = -917.00 14.68 -222.77
+		ROT = 0.00 -0.94 0.00
+	END_BASESET
+
+	# 真ん中上の丘の上、9
+	BASESET
+		POS = 31.65 277.37 2214.99
+		ROT = 0.00 0.00 0.00
+	END_BASESET
+
+	# 左の平らな場所、10
+	BASESET
+		POS = -2252.85 10.13 427.97
+		ROT = 0.00 -1.57 0.00
+	END_BASESET
+
+	# 左の丘の上、11
+	BASESET
+		POS = -839.94 197.36 644.00
+		ROT = 0.00 0.62 0.00
+	END_BASESET
+
+	# スポーン地点、12
+	BASESET
+		POS = 0.00 0.00 -600.00
+		ROT = 0.00 3.14 0.00
+	END_BASESET
+END_STAGESET
+
+
+#--------------------------------[Stage2]-----------------------------
+STAGESET
+	# 真ん中、0
+	BASESET
+		POS = 0.00 0.00 0.00
+		ROT = 0.00 0.00 0.00
+	END_BASESET
+
+	# 真ん中左端の丘上、1
+	BASESET
+		POS = -2120.00 0.00 -151.00
+		ROT = 0.00 -1.57 0.00
+	END_BASESET
+
+	# 真ん中左の丘上、2
+	BASESET
+		POS = -1094.00 92.00 929.00
+		ROT = 0.00 -0.31 0.00
+	END_BASESET
+
+	# 真ん中左の丘上、3
+	BASESET
+		POS = -813.00 126.00 964.00
+		ROT = 0.00 -2.19 0.00
+	END_BASESET
+
+	# 左上の水、4
+	BASESET
+		POS = -1946.00 -76.00 1862.00
+		ROT = 0.00 -0.62 0.00
+	END_BASESET
+
+	# 真ん中上のちょい丘、5
+	BASESET
+		POS = 56.00 75.00 2176.48
+		ROT = 0.00 -0.62 0.00
+	END_BASESET
+
+	# 右上の丘、6
+	BASESET
+		POS = 1160.00 226.00 1317.48
+		ROT = 0.00 0.62 0.00
+	END_BASESET
+
+	# 右上、7
+	BASESET
+		POS = 1979.00 10.00 2127.48
+		ROT = 0.00 1.57 0.00
+	END_BASESET
+
+	# 真ん中右の小道、8
+	BASESET
+		POS = 2060.00 11.00 -287.32
+		ROT = 0.00 2.51 0.00
+	END_BASESET
+
+	# 右下の水の間、9
+	BASESET
+		POS = 1132.00 67.00 -1662.32
+		ROT = 0.00 2.51 0.00
+	END_BASESET
+	
+	# 左下水の左下、10
+	BASESET
+		POS = 50.00 37.00 -1809.53
+		ROT = 0.00 -2.51 0.00
+	END_BASESET
+
+	# 左下のくぼみ、11
+	BASESET
+		POS = -1973.00 20.00 -1872.32
+		ROT = 0.00 -2.51 0.00
+	END_BASESET
+	
+	# 10と11の間、12
+	BASESET
+		POS = -760.81 85.00 -1830.93
+		ROT = 0.00 -3.14 0.00
+	END_BASESET
+END_STAGESET
+
+
+#--------------------------------[Stage3]-----------------------------
+STAGESET
+	# 中央丘の下、0
+	BASESET
+		POS = 5.86 272.00 -95.00
+		ROT = 0.00 0.00 0.00
+	END_BASESET
+	
+	# 中央丘の右、1
+	BASESET
+		POS = 351.00 316.00 92.00
+		ROT = 0.00 -1.57 0.00
+	END_BASESET
+	
+	# 中央丘の上、2
+	BASESET
+		POS = 0.00 333.00 351.00
+		ROT = 0.00 3.14 0.00
+	END_BASESET
+	
+	# 中央丘の左、3
+	BASESET
+		POS = -316.00 297.00 136.60
+		ROT = 0.00 1.57 0.00
+	END_BASESET
+	
+	# 下の水付近の右、4
+	BASESET
+		POS = -250.77 10.00 -2164.00
+		ROT = 0.00 -2.82 0.00
+	END_BASESET
+	
+	# 左下の水と水の間の丘、5
+	BASESET
+		POS = -1811.00 35.00 -1192.00
+		ROT = 0.00 -2.82 0.00
+	END_BASESET
+	
+	# 真ん中左の水横、6
+	BASESET
+		POS = -1069.00 10.00 -791.88
+		ROT = 0.00 3.14 0.00
+	END_BASESET
+	
+	# 左上丘のふもと、7
+	BASESET
+		POS = -1104.00 10.00 937.88
+		ROT = 0.00 0.00 0.00
+	END_BASESET
+	
+	# 左上丘の左下、8
+	BASESET
+		POS = -1942.12 190.00 1285.00
+		ROT = 0.00 -0.62 0.00
+	END_BASESET
+	
+	# 左上丘の左上、9
+	BASESET
+		POS = -1749.67 352.00 2034.00
+		ROT = 0.00 -0.94 0.00
+	END_BASESET
+	
+	# 左上丘の右上、10
+	BASESET
+		POS = -683.80 223.00 1919.00
+		ROT = 0.00 -0.94 0.00
+	END_BASESET
+	
+	# 真ん中上の斜め道、11
+	BASESET
+		POS = -226.80 10.00 1926.00
+		ROT = 0.00 0.80 0.00
+	END_BASESET
+	
+	# 右上水のくぼみ、12
+	BASESET
+		POS = 1850.00 39.00 1692.50
+		ROT = 0.00 0.94 0.00
+	END_BASESET
+	
+	# 真ん中右の山間右、13
+	BASESET
+		POS = 1696.00 14.00 855.50
+		ROT = 0.00 0.62 0.00
+	END_BASESET
+	
+	# 真ん中右の下、14
+	BASESET
+		POS = 2084.72 36.00 -751.88
+		ROT = 0.00 2.30 0.00
+	END_BASESET
+	
+	# 右下の右、15
+	BASESET
+		POS = 1990.30 52.00 -1860.52
+		ROT = 0.00 2.30 0.00
+	END_BASESET
+	
+	# 右下の左、16
+	BASESET
+		POS = 1001.30 120.00 -1908.09
+		ROT = 0.00 2.82 0.00
+	END_BASESET
+	
+	# 真ん中ちょい右のちょい丘、17
+	BASESET
+		POS = 910.00 40.00 -547.79
+		ROT = 0.00 0.94 0.00
+	END_BASESET
+	
+END_STAGESET
+
+
+END_SCRIPT		# この行は絶対消さないこと！
