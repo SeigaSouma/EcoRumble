@@ -83,7 +83,7 @@ STAGESET
 	# ウェーブ1
 	WAVESET
 		
-		RESPAWNNUM = 6	# リスポーンする規定値
+		RESPAWNNUM = 8	# リスポーンする規定値
 		
 		ENEMYSET
 			TYPE = 1	# どの種類か
@@ -552,6 +552,8 @@ STAGESET
 			ROT = 0.00 0.00 0.00
 		END_ENEMYSET
 		
+		
+		
 		ENEMYSET
 			TYPE = 2	# どの種類か
 			BASE = 3
@@ -663,18 +665,7 @@ STAGESET
 	# ウェーブ1
 	WAVESET
 		
-		RESPAWNNUM = 30	# リスポーンする規定値
-		
-		ENEMYSET
-			TYPE = 8	# どの種類か
-			BASE = 14
-			SPAWNNUM = -1	# 出現する数
-			MOVETYPE = 0	# 行動の種類
-			SPAWNTYPE = 0	# 出現の種類
-			CHARACTER = -1	# キャラクターの種類
-			POS = 0.00 0.00 700.00
-			ROT = 0.00 0.00 0.00
-		END_ENEMYSET
+		RESPAWNNUM = 45	# リスポーンする規定値
 		
 		ENEMYSET
 			TYPE = 1	# どの種類か
@@ -695,6 +686,17 @@ STAGESET
 			SPAWNTYPE = 1	# 出現の種類
 			CHARACTER = 9	# キャラクターの種類
 			POS = 0.00 0.00 0.00
+			ROT = 0.00 0.00 0.00
+		END_ENEMYSET
+		
+		ENEMYSET
+			TYPE = 8	# どの種類か
+			BASE = 14
+			SPAWNNUM = -1	# 出現する数
+			MOVETYPE = 0	# 行動の種類
+			SPAWNTYPE = 0	# 出現の種類
+			CHARACTER = -1	# キャラクターの種類
+			POS = 0.00 0.00 700.00
 			ROT = 0.00 0.00 0.00
 		END_ENEMYSET
 		
@@ -748,7 +750,7 @@ STAGESET
 	# ウェーブ1
 	WAVESET
 		
-		RESPAWNNUM = 25	# リスポーンする規定値
+		RESPAWNNUM = 30	# リスポーンする規定値
 		
 		ENEMYSET
 			TYPE = 12	# どの種類か
@@ -757,6 +759,17 @@ STAGESET
 			MOVETYPE = 2	# 行動の種類
 			SPAWNTYPE = 0	# 出現の種類
 			CHARACTER = 9	# キャラクターの種類
+			POS = 0.00 0.00 0.00
+			ROT = 0.00 0.00 0.00
+		END_ENEMYSET
+		
+		ENEMYSET
+			TYPE = 8	# どの種類か
+			BASE = 12
+			SPAWNNUM = -1	# 出現する数
+			MOVETYPE = 0	# 行動の種類
+			SPAWNTYPE = 0	# 出現の種類
+			CHARACTER = -1	# キャラクターの種類
 			POS = 0.00 0.00 0.00
 			ROT = 0.00 0.00 0.00
 		END_ENEMYSET
@@ -885,6 +898,17 @@ STAGESET
 	WAVESET
 		
 		RESPAWNNUM = 15	# リスポーンする規定値
+		
+		ENEMYSET
+			TYPE = 8	# どの種類か
+			BASE = 0
+			SPAWNNUM = -1	# 出現する数
+			MOVETYPE = 0	# 行動の種類
+			SPAWNTYPE = 0	# 出現の種類
+			CHARACTER = -1	# キャラクターの種類
+			POS = 0.00 0.00 300.00
+			ROT = 0.00 0.00 0.00
+		END_ENEMYSET
 		
 		ENEMYSET
 			TYPE = 4	# どの種類か
